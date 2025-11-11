@@ -10,6 +10,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+    <style>
+        .responsive-image {
+            object-fit: cover;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .story-image img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .appearance-image {
+            width: 100%;
+            max-width: 250px;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .gallery-image {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            aspect-ratio: auto;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body class="monokuma-pattern">
     <div class="radio-static"></div>
@@ -23,7 +52,7 @@
             <p class="tagline">Ultime Radio Host</p>
             <img src="img/radio-logo.svg" alt="Radio Logo" class="header-logo" width="80" height="80">
         </header>
-        
+
         <nav>
             <ul>
                 <li><a href="#info" class="nav-link">Informations</a></li>
@@ -34,7 +63,7 @@
                 <li><a href="#galerie" class="nav-link">Galerie</a></li>
             </ul>
         </nav>
-        
+
         <main>
             <section id="info" class="card">
                 <h2><i class="fas fa-user"></i> Informations Personnelles</h2>
@@ -69,7 +98,7 @@
                     </div>
                 </div>
             </section>
-            
+
             <section id="personnalite" class="card">
                 <h2><i class="fas fa-brain"></i> Personnalité</h2>
                 <div class="personality-content">
@@ -91,7 +120,7 @@
                     ceux qui l'intéressent des menaces extérieures.</p>
                     </div>
             </section>
-            
+
             <section id="traits" class="card">
                 <h2><i class="fas fa-star"></i> Traits de Caractère</h2>
                 <div class="traits-container">
@@ -102,7 +131,7 @@
                             <li><i class="fas fa-check"></i> Accueillant</li>
                             <li><i class="fas fa-check"></i> Sait bien lire les autres personnes</li>
                         </ul>
-                    </div>
+            </div>
                     <div class="traits-column">
                         <h3>Défauts</h3>
                         <ul class="traits-list negative">
@@ -110,7 +139,7 @@
                             <li><i class="fas fa-times"></i> Manque d'empathie</li>
                             <li><i class="fas fa-times"></i> Aucun respect des limites personnelles</li>
                         </ul>
-                    </div>
+    </div>
                 </div>
             </section>
 
@@ -148,7 +177,7 @@
                             <p>Derrière cette façade de normalité se cachait une réalité bien plus sombre. Son père, un homme rongé par l'alcoolisme, devenait de plus en plus violent au fil des années. Kim développa très tôt une capacité à masquer ses émotions, à sourire même dans les moments les plus terrifiants, comme un mécanisme de défense psychologique.</p>
                         </div>
                         <div class="story-image">
-                            <img src="img/kim_jeune_avec_sa_mere.jpeg" alt="Kim jeune avec sa mère" class="childhood-image">
+                            <img src="img/kim_jeune_avec_sa_mere.jpeg" alt="Kim jeune avec sa mère" class="childhood-image responsive-image">
                             <div class="image-caption">Kim et sa mère, peu avant la tragédie</div>
                         </div>
                     </div>
@@ -176,7 +205,7 @@
                             <p>Aujourd'hui, à 19 ans, Kim Tursley est devenu l'Ultime Désespoir, orchestrant dans l'ombre un jeu mortel tout en maintenant sa façade d'Ultime Radio Host. Sa voix mélodieuse continue de captiver les ondes, tandis que son esprit torturé conçoit des épreuves toujours plus cruelles pour ses camarades. Et à travers tout cela, son sourire ne faiblit jamais - un rappel constant de la leçon que sa mère lui a enseignée et qu'il a pervertie au-delà de toute reconnaissance.</p>
                         </div>
                         <div class="story-image">
-                            <img src="img/kim_background.jpeg" alt="Kim dans son studio radio" class="background-image">
+                            <img src="img/kim_background.jpeg" alt="Kim dans son studio radio" class="background-image responsive-image">
                             <div class="image-caption">Kim dans son studio radio à l'Académie</div>
                         </div>
                     </div>
