@@ -92,7 +92,7 @@
         opacity: 0.8;
     }
     100% {
-        background-position: 0% 0%;
+        background-position: 0 0;
         opacity: 0;
     }
 }
