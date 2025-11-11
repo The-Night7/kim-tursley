@@ -1,0 +1,678 @@
+:root {
+    --primary-color: #ff1414;
+    --secondary-color: #ff8c00;
+    --dark-color: #1a0500;
+    --darker-color: #0d0200;
+    --light-color: #fff;
+    --accent-color: #b30000;
+    --shadow-color: rgba(255, 20, 20, 0.3);
+    --danganronpa-pink: #fb71a7;
+    --danganronpa-black: #000000;
+    --danganronpa-white: #ffffff;
+    --gradient: linear-gradient(135deg, var(--dark-color) 0%, #2d0a00 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Danganronpa';
+    src: url('../fonts/platform_eight.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--darker-color);
+    color: var(--light-color);
+    line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
+    background-image: url('../img/monokuma-pattern.svg');
+    background-size: 200px;
+    background-repeat: repeat;
+    background-attachment: fixed;
+}
+
+.radio-static {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/png;base64,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');
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0.85);
+    box-shadow: 0 0 30px rgba(255, 20, 20, 0.5);
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Header Styles */
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 20px;
+}
+
+.logo {
+    display: flex;
+        align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    }
+    
+.radio-wave {
+    width: 40px;
+    height: 40px;
+    background-image: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+    animation: pulse 2s infinite;
+    margin: 0 1rem;
+    position: relative;
+    }
+
+.radio-wave::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-image: url('../img/red-eye.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.8); opacity: 0.7; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.8); opacity: 0.7; }
+}
+
+h1 {
+    font-family: 'Creepster', cursive;
+    font-size: 4rem;
+    color: var(--primary-color);
+    text-shadow: 3px 3px 0 var(--dark-color),
+                 -1px -1px 0 var(--secondary-color),
+                 1px -1px 0 var(--secondary-color),
+                 -1px 1px 0 var(--secondary-color),
+                 1px 1px 0 var(--secondary-color);
+    margin: 0;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+}
+
+.tagline {
+    font-size: 1.5rem;
+    color: var(--danganronpa-pink);
+    font-style: italic;
+    margin-top: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+/* Navigation Styles */
+nav {
+    background-color: var(--dark-color);
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--primary-color);
+}
+
+nav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/blood-splatter.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right center;
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+}
+
+nav li {
+    padding: 1rem;
+    position: relative;
+}
+
+.nav-link {
+    color: var(--light-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    position: relative;
+    transition: color 0.3s;
+    text-transform: uppercase;
+}
+
+.nav-link:hover {
+    color: var(--danganronpa-pink);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Card Styles */
+.card {
+    background: var(--gradient);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 6px 12px var(--shadow-color);
+    border-left: 4px solid var(--primary-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, var(--secondary-color) 0%, transparent 70%);
+    opacity: 0.1;
+    border-radius: 50%;
+    transform: translate(50%, -50%);
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/blood-splatter.svg');
+    background-size: 150px;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.card h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card h2 i {
+    margin-right: 0.5rem;
+}
+
+/* Info Grid Styles */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--secondary-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.info-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(45deg, transparent 70%, var(--primary-color) 100%);
+    opacity: 0.1;
+}
+
+.info-label {
+    font-size: 0.9rem;
+    color: var(--danganronpa-pink);
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.info-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Personality Section */
+.personality-content p {
+    margin-bottom: 1rem;
+    line-height: 1.8;
+    text-align: justify;
+    position: relative;
+    padding-left: 15px;
+}
+
+.personality-content p::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 5px;
+    height: calc(100% - 10px);
+    background-color: var(--primary-color);
+    opacity: 0.5;
+}
+
+/* Traits Section */
+.traits-container {
+    display: flex;
+    gap: 2rem;
+}
+
+.traits-column {
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.traits-column::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/blood-splatter.svg');
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.traits-column h3 {
+    color: var(--danganronpa-pink);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.traits-list {
+    list-style: none;
+}
+
+.traits-list li {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+}
+
+.traits-list i {
+    margin-right: 0.5rem;
+}
+
+.positive i {
+    color: var(--secondary-color);
+}
+
+.negative i {
+    color: var(--primary-color);
+}
+
+/* Preferences Section */
+.preferences-container {
+    display: flex;
+    gap: 2rem;
+}
+
+.preferences-column {
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.preferences-column::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/blood-splatter.svg');
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.preferences-column h3 {
+    color: var(--danganronpa-pink);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.preferences-list {
+    list-style: none;
+}
+
+.preferences-list li {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+}
+
+.preferences-list i {
+    margin-right: 0.5rem;
+    width: 20px;
+    text-align: center;
+}
+
+.likes i {
+    color: var(--secondary-color);
+}
+
+.dislikes i {
+    color: var(--primary-color);
+}
+
+/* Story Section */
+.story-content {
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    text-align: justify;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1.5rem;
+    border-radius: 8px;
+    position: relative;
+}
+
+.story-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/microphone.svg');
+    background-size: 80px;
+    background-repeat: no-repeat;
+    background-position: right 20px top 20px;
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.story-content p {
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 15px;
+}
+
+.story-content p::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 5px;
+    height: calc(100% - 10px);
+    background-color: var(--primary-color);
+    opacity: 0.5;
+}
+
+.additional-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.additional-info h3 {
+    color: var(--danganronpa-pink);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.additional-info h3 i {
+    margin-right: 0.5rem;
+}
+
+.mobile, .role, .appearance {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--secondary-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.mobile::after, .role::after, .appearance::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(45deg, transparent 70%, var(--primary-color) 100%);
+    opacity: 0.1;
+}
+
+/* Footer Styles */
+footer {
+    margin-top: 3rem;
+    text-align: center;
+    padding: 2rem 0;
+    position: relative;
+    border-top: 3px solid var(--primary-color);
+    padding-top: 20px;
+}
+
+.radio-dial {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.radio-dial::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    background-image: url('../img/radio-logo.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+.dial-container {
+    display: inline-block;
+    position: relative;
+    width: 200px;
+    height: 40px;
+    background-color: var(--dark-color);
+    border-radius: 20px;
+    padding: 5px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--primary-color);
+}
+
+.dial {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    top: 5px;
+    left: 70px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: left 0.3s;
+}
+
+.dial::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: var(--danganronpa-black);
+    border-radius: 50%;
+}
+
+.frequency {
+    position: absolute;
+    bottom: -25px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--danganronpa-pink);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.footer-text {
+    font-style: italic;
+    color: var(--danganronpa-pink);
+    font-size: 1.2rem;
+    margin-top: 30px;
+    position: relative;
+    display: inline-block;
+}
+
+.footer-text::before, .footer-text::after {
+    content: '"';
+    color: var(--primary-color);
+    font-size: 1.5em;
+    position: relative;
+    top: 5px;
+}
+
+/* Danganronpa Trial Elements */
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/blood-splatter.svg');
+    background-size: 300px;
+    background-repeat: no-repeat;
+    background-position: top right;
+    opacity: 0.05;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    .traits-container,
+    .preferences-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav li {
+        padding: 0.5rem;
+    }
+}

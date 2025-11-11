@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300">
+  <!-- Corps du microphone -->
+  <rect x="70" y="50" width="60" height="120" rx="30" ry="30" fill="#333333" stroke="#ff4500" stroke-width="3"/>
+
+  <!-- Grille du microphone -->
+  <circle cx="100" cy="70" r="25" fill="#111111" stroke="#ff4500" stroke-width="2"/>
+  <circle cx="100" cy="70" r="20" fill="none" stroke="#ff8c00" stroke-width="1" stroke-dasharray="3,2"/>
+  <circle cx="100" cy="70" r="15" fill="none" stroke="#ff8c00" stroke-width="1" stroke-dasharray="2,2"/>
+  <circle cx="100" cy="70" r="10" fill="none" stroke="#ff8c00" stroke-width="1" stroke-dasharray="1,2"/>
+
+  <!-- Support -->
+  <rect x="95" y="170" width="10" height="80" fill="#333333" stroke="#ff4500" stroke-width="2"/>
+
+  <!-- Base -->
+  <ellipse cx="100" cy="250" rx="40" ry="10" fill="#333333" stroke="#ff4500" stroke-width="2"/>
+
+  <!-- Ondes radio -->
+  <path d="M40,70 Q30,50 40,30 Q50,50 40,70" fill="none" stroke="#ff4500" stroke-width="2" opacity="0.7"/>
+  <path d="M30,70 Q15,40 30,10 Q45,40 30,70" fill="none" stroke="#ff4500" stroke-width="2" opacity="0.5"/>
+  <path d="M160,70 Q170,50 160,30 Q150,50 160,70" fill="none" stroke="#ff4500" stroke-width="2" opacity="0.7"/>
+  <path d="M170,70 Q185,40 170,10 Q155,40 170,70" fill="none" stroke="#ff4500" stroke-width="2" opacity="0.5"/>
+</svg>

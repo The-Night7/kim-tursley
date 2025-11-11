@@ -1,0 +1,204 @@
+/* Effets spécifiques à Danganronpa */
+
+/* Effet de glitch pour le titre */
+.glitch-effect {
+    animation: danganronpa-glitch 0.2s infinite;
+}
+
+@keyframes danganronpa-glitch {
+    0% {
+        transform: translate(0);
+        text-shadow: 0 0 0 #ff1414;
+    }
+    20% {
+        transform: translate(-2px, 2px);
+        text-shadow: -2px 2px 0 #ff1414;
+    }
+    40% {
+        transform: translate(2px, -2px);
+        text-shadow: 2px -2px 0 #ff1414;
+    }
+    60% {
+        transform: translate(-2px, -2px);
+        text-shadow: -2px -2px 0 #ff1414;
+    }
+    80% {
+        transform: translate(2px, 2px);
+        text-shadow: 2px 2px 0 #ff1414;
+    }
+    100% {
+        transform: translate(0);
+        text-shadow: 0 0 0 #ff1414;
+    }
+}
+
+/* Effet de sang qui coule */
+.blood-drops {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.blood-drop {
+    position: absolute;
+    top: -50px;
+    width: 2px;
+    height: 50px;
+    background: linear-gradient(to bottom, transparent, #ff1414);
+    animation: blood-drip 10s linear infinite;
+}
+
+@keyframes blood-drip {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(calc(100vh + 50px));
+        opacity: 1;
+    }
+}
+
+/* Style pour les éléments "révélés" (comme dans les procès) */
+.revealed {
+    position: relative;
+    z-index: 1;
+}
+
+.revealed::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 40%, #ff1414 50%, transparent 60%);
+    background-size: 200% 200%;
+    animation: reveal-sweep 1s forwards;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes reveal-sweep {
+    0% {
+        background-position: 100% 100%;
+        opacity: 0.8;
+    }
+    100% {
+        background-position: 0% 0%;
+        opacity: 0;
+    }
+}
+
+/* Effet de texte de vérité */
+.truth-bullet {
+    position: relative;
+    display: inline-block;
+    color: #ff1414;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(255, 20, 20, 0.5);
+}
+
+.truth-bullet::before {
+    content: '→';
+    position: absolute;
+    left: -20px;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.truth-bullet:hover::before {
+    opacity: 1;
+    transform: translateX(5px);
+}
+
+/* Style pour la section "Mastermind" */
+.role p {
+    position: relative;
+    overflow: hidden;
+}
+
+.role p::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 20, 20, 0.2), transparent);
+    transform: translateX(-100%);
+    animation: mastermind-reveal 3s infinite;
+}
+
+@keyframes mastermind-reveal {
+    0% { transform: translateX(-100%); }
+    50% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Style pour le motif Monokuma */
+.monokuma-pattern {
+    position: relative;
+}
+
+.monokuma-pattern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        #ffffff 0%, #ffffff 50%, 
+        #000000 50%, #000000 100%);
+    opacity: 0.05;
+    z-index: -1;
+}
+
+/* Style pour les cartes de personnage */
+.card {
+    border: 1px solid var(--primary-color);
+    position: relative;
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-color);
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+    transform: rotate(45deg);
+}
+
+/* Effet de transition pour les sections */
+.card {
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 20, 20, 0.2), transparent);
+    animation: section-transition 3s infinite;
+    pointer-events: none;
+}
+
+@keyframes section-transition {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(200%); }
+}

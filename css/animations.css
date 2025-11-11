@@ -1,0 +1,184 @@
+/* Animation pour les éléments qui apparaissent */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+    animation: fadeIn 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.2s; }
+.card:nth-child(3) { animation-delay: 0.3s; }
+.card:nth-child(4) { animation-delay: 0.4s; }
+.card:nth-child(5) { animation-delay: 0.5s; }
+
+/* Animation pour le titre */
+@keyframes glitch {
+    0% {
+        text-shadow: 3px 3px 0 var(--dark-color), 
+                    -1px -1px 0 var(--secondary-color),
+                    1px -1px 0 var(--secondary-color),
+                    -1px 1px 0 var(--secondary-color),
+                    1px 1px 0 var(--secondary-color);
+        transform: translate(0);
+    }
+    20% {
+        text-shadow: -3px -3px 0 var(--dark-color),
+                    1px 1px 0 var(--danganronpa-pink),
+                    -1px 1px 0 var(--secondary-color),
+                    1px -1px 0 var(--secondary-color),
+                    -1px -1px 0 var(--secondary-color);
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        text-shadow: 3px 3px 0 var(--dark-color),
+                    -1px -1px 0 var(--secondary-color),
+                    1px -1px 0 var(--danganronpa-pink),
+                    -1px 1px 0 var(--secondary-color),
+                    1px 1px 0 var(--secondary-color);
+        transform: translate(2px, -2px);
+    }
+    60% {
+        text-shadow: -3px -3px 0 var(--dark-color),
+                    1px 1px 0 var(--secondary-color),
+                    -1px 1px 0 var(--secondary-color),
+                    1px -1px 0 var(--danganronpa-pink),
+                    -1px -1px 0 var(--secondary-color);
+        transform: translate(-2px, -2px);
+    }
+    80% {
+        text-shadow: 3px 3px 0 var(--dark-color),
+                    -1px -1px 0 var(--secondary-color),
+                    1px -1px 0 var(--secondary-color),
+                    -1px 1px 0 var(--danganronpa-pink),
+                    1px 1px 0 var(--secondary-color);
+        transform: translate(2px, 2px);
+    }
+    100% {
+        text-shadow: 3px 3px 0 var(--dark-color),
+                    -1px -1px 0 var(--secondary-color),
+                    1px -1px 0 var(--secondary-color),
+                    -1px 1px 0 var(--secondary-color),
+                    1px 1px 0 var(--secondary-color);
+        transform: translate(0);
+    }
+}
+
+h1:hover {
+    animation: glitch 0.3s infinite;
+}
+
+/* Animation pour les ondes radio */
+@keyframes radioWave {
+    0% { transform: scale(0.8); opacity: 0.2; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+    100% { transform: scale(0.8); opacity: 0.2; }
+}
+
+.radio-wave:first-child {
+    animation: radioWave 3s infinite;
+}
+
+.radio-wave:last-child {
+    animation: radioWave 3s infinite 1.5s;
+}
+
+/* Animation pour le bouton radio */
+@keyframes tuneRadio {
+    0% { left: 10px; }
+    25% { left: 160px; }
+    50% { left: 70px; }
+    75% { left: 120px; }
+    100% { left: 70px; }
+}
+
+.dial:hover {
+    animation: tuneRadio 3s ease-in-out;
+}
+
+/* Animation pour le fond statique */
+@keyframes staticNoise {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+
+.radio-static {
+    animation: staticNoise 30s linear infinite;
+}
+
+/* Animation pour les liens de navigation */
+@keyframes navGlow {
+    0% { text-shadow: 0 0 5px var(--primary-color); }
+    50% { text-shadow: 0 0 10px var(--primary-color), 0 0 15px var(--danganronpa-pink); }
+    100% { text-shadow: 0 0 5px var(--primary-color); }
+}
+
+.nav-link:hover {
+    animation: navGlow 1.5s infinite;
+}
+
+/* Animation pour le sang */
+@keyframes drip {
+    0% { height: 0; opacity: 0; }
+    20% { opacity: 1; }
+    100% { height: 100px; opacity: 1; }
+}
+
+.card h2::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 10px;
+    width: 2px;
+    height: 0;
+    background-color: var(--primary-color);
+    animation: drip 5s ease-in-out infinite;
+    animation-delay: calc(var(--i, 0) * 1s);
+    transform-origin: top;
+    opacity: 0;
+}
+
+.card:nth-child(1) h2::before { --i: 1; }
+.card:nth-child(2) h2::before { --i: 2; }
+.card:nth-child(3) h2::before { --i: 3; }
+.card:nth-child(4) h2::before { --i: 4; }
+.card:nth-child(5) h2::before { --i: 5; }
+
+/* Animation pour les yeux qui clignotent */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.radio-wave::before {
+    animation: blink 3s infinite;
+}
+
+/* Animation de transition de classe */
+@keyframes classTransition {
+    0% { transform: translateX(-100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+.card {
+    animation: classTransition 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+/* Animation de pulsation pour les éléments importants */
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.role p {
+    animation: heartbeat 1.5s infinite;
+    display: inline-block;
+    color: var(--primary-color);
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
